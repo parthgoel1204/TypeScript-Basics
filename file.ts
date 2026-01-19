@@ -156,4 +156,51 @@ type cardDate = {
 type cardDetails = cardDate & cardnumber & {
     cvv : number;
 }
+
+// Unions : It allows us to deal with the situation where we are not sure what type of data we are going to encounter so using union we can combine 2 or more types of data that we can include into a variable or any array and vice vresa..
+
+let score : number | string = 33;
+score = 44;
+score = "55";  
+
+type User3 = {
+    name: string;
+    id : number;
+}
+
+type Admin = {
+    username : string;
+    id: number;
+}
+
+let parth :  User3 | Admin = {
+    name:"Parth" , id :443
+};
+
+parth = {username : "pg" , id : 443};
+
+// function getDBId(id :number | string){
+//     console.log(`DB id is : ${id}`);
+// }
+
+getDBId(3);
+getDBId("3");
+
+function getDBId(id :number|string){
+    // id.toLowerCase(); // it gives a red line as it treates id as a new datatype that has string or number both
+    // So to overcome the above squiggly line we need to the strict type checking
+    // ## Below is called as teh narrowing down of union type .
+    if(typeof id === "string"){
+        id.toLowerCase();
+    }
+}
+
+// array
+
+const data : number[] = [1 , 2 ,3];
+const data2 : string[] = ["hi" , "hello", "bye"];
+const data3 : string[] | number[] = [1,2,3] // this specifies that either all the elements in the array can be string or all can be number
+const data4 : (string | number)[] = [1 , 2, "hi"]; // this is the array that can have both numbers and strings as its elements.
+
+let seatAllotment: "aisle" | "middle" | "window" // this is used to fix the values of the variable so that no other value can be assigned 
 export {}
