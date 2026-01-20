@@ -220,4 +220,103 @@ newUser.push(3); // we marked our newUser to follow a tuple so it must never be 
 
 // console.log(newUser);
 
+// interfaces
+
+interface User5 {
+    readonly dbId : number,
+    email : string,
+    userId : number,
+    googleId? : string,
+    // startTrail: () => string
+    startTrail(): string,
+    getCoupon(couponName : string , value: number) : number
+}
+
+// REOPENING OF THE INTERFACE
+
+interface User5 {
+    githubId : string
+}
+
+// INHERITANCE OF THE INTERFACE 
+interface Admin1 extends User5 {
+    role : "admin" | "ta" | "learner"
+}
+
+// const PG : User5 = {
+//     dbId : 22 , email : "pcghbc" , userId : 123456 , githubId : "4556",
+//     startTrail: () => {
+//         return "trail started";
+//     },
+//     getCoupon :(couponName : "PG25", value : 1234) => {
+//         return 38;
+//     },
+// }
+
+const PG : Admin1 = {
+    dbId : 22 , email : "pcghbc" , userId : 123456 , githubId : "4556",
+    role : "learner",
+    startTrail: () => {
+        return "trail started";
+    },
+    getCoupon :(couponName : "PG25", value : 1234) => {
+        return 38;
+    },
+}
+
+// public & private 
+// PRIVATE keyword can also be used with methods as we use it with properties
+class khiladi {
+    // private readonly city : string = "Panipat";
+    readonly city : string = "Panipat";
+    name: string;
+    email : string;
+    constructor(email : string , name : string){
+        this.email = email;
+        this.name = name;
+    }
+}
+// we can use #name to make it a private field instead of writing private keyword 
+const pd = new khiladi("nhbuaekd@gmail.com" , "dp");
+
+// Production level code for the above class 
+
+class khiladi2 {
+    readonly city : string = "Panipat";
+
+    constructor
+    (
+        public email : string ,
+        public name : string,
+        private userId : number)
+        {
+        }
+// GETTERS & SETTERS
+    protected counting = 0;
+    private _courseCount = 1;
+
+    get getEmail(): string {
+        return `apple${this.email}`;
+    }
+
+    get courseCount(): number{
+        return this._courseCount;
+    }
+
+    set courseCount(courseNum){
+        if(courseNum <= 1){
+            throw new Error("Course count should be more than 1")
+        }
+        this._courseCount = courseNum;
+    }
+}
+// use of protected : The property marked as this can be accessed in its own class and in the class tat inherits the class
+
+class subUser extends khiladi2{
+    isFamily:boolean = true;
+    changeCounting(){
+        this.counting = 4;
+    }
+}
+pd.city // this can not be accessed outside the class 
 export {}
