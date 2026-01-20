@@ -203,4 +203,21 @@ const data3 : string[] | number[] = [1,2,3] // this specifies that either all th
 const data4 : (string | number)[] = [1 , 2, "hi"]; // this is the array that can have both numbers and strings as its elements.
 
 let seatAllotment: "aisle" | "middle" | "window" // this is used to fix the values of the variable so that no other value can be assigned 
+
+// Tuples : IT is a kind of specialised array given to us by TYpeScript with some special restrictions on it.
+// IN the tuples order of the array also matters
+let tUser : [string , number , boolean];
+tUser = ["pg" , 123 , true];
+
+let rgb :[number , number, number] = [225 ,  256 , 124];
+
+type User4 = [number , string];
+const newUser: User4 = [112 , "exam@goggle.com"];
+
+newUser[1] = "nchc@xyz.com";
+
+newUser.push(3); // we marked our newUser to follow a tuple so it must never be more than the size of 2 but using push we have altered it's size 
+
+// console.log(newUser);
+
 export {}
