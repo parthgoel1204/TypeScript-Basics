@@ -319,4 +319,30 @@ class subUser extends khiladi2{
     }
 }
 pd.city // this can not be accessed outside the class 
+
+// Abstract Class : No new object can be created from an abstract class but they help to define the class who are inheriting them to get a better structure of the classes .
+// If we want to make some methods to be compulsorily inherited we can make them "abstract" as well.
+//  We are allowed to overwrite the method declared in the abstract class, in the inherited class.
+abstract class takePhoto{
+    constructor(
+        public cameraMode : string,
+        public filter : string
+    ){};
+
+    abstract getMethod(): void
+}
+class Instagram extends takePhoto{
+    constructor(
+        public cameraMode: string,
+        public filter :  string,
+        public burst : number
+    ){
+        super(cameraMode , filter)
+    }
+
+    getMethod(): void {
+        console.log("Abstract Method it is:");
+    }
+}
+const darky = new Instagram("test" ,"test234" , 3)
 export {}
