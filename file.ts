@@ -345,4 +345,89 @@ class Instagram extends takePhoto{
     }
 }
 const darky = new Instagram("test" ,"test234" , 3)
+
+// Generics 
+function identity<Type>(arg :Type): Type{
+    return arg;
+}
+
+const scores : Array<number> = [];
+const names : Array<string> = [];
+
+function identityOne(val : boolean | number):boolean |number{
+    return val; // in this we've got the problem that we are never sure if value is boolean then we are returning only boolean but with this code we can return boolean or number
+}
+
+function identityTwo(val : any):any{
+    return val; //Using any is not a healthy practice and this also doesn't solve the problem
+}
+
+function identityThree<Type>(val: Type):Type{
+    return val;
+}
+
+// identityThree(3);
+
+function identityFour<T>(val : T):T{ //just a short form for identityThree function 
+    return val;
+}
+
+interface Bootle{
+    brand : string,
+    type : number
+}
+
+// identityFour<Bootle>({ brand : "" , type : 4})
+
+function getSearchProducts<T>(products : T[]):T{
+    // Database Operations
+    const myIndex = 3;
+    // return products[3]; // single value from the array
+    return products[myIndex]; 
+}
+
+// defining generics in arrow functions 
+
+const getMoreProducts = <T>(products : T[]):T  => {
+    // do some database operations
+    const myIndex = 4;
+    return products[myIndex];
+}
+
+// ## <T,> many times this syntax for generics will be used just to mention this is not a JSX syntax but a generics syntax
+
+interface Database{
+    connection :string,
+    password : string,
+    username : string
+}
+
+function anotherIdentity <T,U extends Database>(valOne : T, valTwo : U) : object{
+    return {
+        valOne , valTwo
+    }
+}
+
+// anotherIdentity (3 , { connection :"done" ,password:  "34", username : "pidgey"});
+
+// Class Types in Generics
+
+interface quiz{
+    name: string,
+    type : string
+}
+
+interface Course{
+    name: string,
+    author: string,
+    subject : string
+}
+
+class Sellable <T> {
+    public cart :T[] = [];
+
+    addToCart(product : T){
+        this.cart.push(product)
+    }
+}
 export {}
