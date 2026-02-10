@@ -6,24 +6,36 @@ type user ={
 function makeCounter(initialValue :number  = 0) :user{
     // Your implementation
     let x = initialValue;
-    function increment(): number{
-        return x++;
-    }
-
-    function decrement():number{
-        return x--;
-    }
-
-    function reset():number{
-        x = initialValue
-        return x;
-    }
-
     return {
-        increment,
-        decrement,
-        reset
-    };
+        increment():number{
+            return ++x;
+        },
+        decrement():number {
+            return --x;
+        },
+        reset():number{
+            x = initialValue;
+            return x;
+        }
+    }
+    // function increment(): number{
+    //     return x++;
+    // }
+
+    // function decrement():number{
+    //     return x--;
+    // }
+
+    // function reset():number{
+    //     x = initialValue
+    //     return x;
+    // }
+
+    // return {
+    //     increment,
+    //     decrement,
+    //     reset
+    // };
 }
 
 const counter = makeCounter(5);
