@@ -5,7 +5,7 @@
 // In the JS we can add 2 + '2' = "22";
 // The above was possible because "TYPESAFETY" was missing .
 
-// TypeScript does "STATIC CHECKING" which means the parser of the language ot the entire syntax of the language is constantly being analyzed by the IDE'S
+// TypeScript does "STATIC CHECKING" which means the parser of the language of the entire syntax of the language is constantly being analyzed by the IDE'S
 
 // We write our code in TS and that is further transpiled into JS.
 // TypeScript is just a development tool and our whole code that we sent to the production is 100% JS.
@@ -27,7 +27,7 @@ console.log(greetings);
 // we don't specifically declare Interger or Float we simply call all of them as NUMBER 
 // number
 let userId:number = 334466;
-// now whenever we qaccess userID using dot(.) it will only give methods that can be applied on number
+// now whenever we access userID using dot(.) it will only give methods that can be applied on number.
 
 // boolean
 let isLoggedIn: boolean = false;
@@ -40,7 +40,7 @@ let hero : string;
 function getHero(){
     return "THOR"
 }
-hero = getHero(); // hero is getting any type that is any type can be returned and stored in it.
+hero = getHero(); // hero is getting any type i.e., any type can be returned and stored in it.
 // So, for correcting this we will use ':' and tell the type explicitly at the declaration time.
 // let hero : string;
 // "any" is not a typechecker it turns off the typechecker
@@ -67,6 +67,7 @@ getUpper("hi");
 function signUp(name:string , email:string, isPaid: boolean){}
 signUp( "abyu" , "cnjsbjb" , false);
 
+// arrow function
 let login = (name:string , email:string, isPaid: boolean = false)=>{}
 login("Parth" , "parth@google.com");
 
@@ -122,7 +123,7 @@ function createCourse() : {name:string , price: number}{
 // }
 
 // function createNewUser (user : User):User{
-// // function body
+//  function body
 //     return {name: "" , email: "", isActive: true};
 // }
 
@@ -188,8 +189,8 @@ getDBId("3");
 
 function getDBId(id :number|string){
     // id.toLowerCase(); // it gives a red line as it treates id as a new datatype that has string or number both
-    // So to overcome the above squiggly line we need to the strict type checking
-    // ## Below is called as teh narrowing down of union type .
+    // So to overcome the above squiggly line we need to do the strict type checking
+    // ## Below is called as the "narrowing down of union type" .
     if(typeof id === "string"){
         id.toLowerCase();
     }
@@ -204,8 +205,8 @@ const data4 : (string | number)[] = [1 , 2, "hi"]; // this is the array that can
 
 let seatAllotment: "aisle" | "middle" | "window" // this is used to fix the values of the variable so that no other value can be assigned 
 
-// Tuples : IT is a kind of specialised array given to us by TYpeScript with some special restrictions on it.
-// IN the tuples order of the array also matters
+// Tuples : It is a kind of specialized array given to us by TypeScript with some special restrictions on it.
+// In the tuples order of the array also matters.
 let tUser : [string , number , boolean];
 tUser = ["pg" , 123 , true];
 
@@ -221,7 +222,6 @@ newUser.push(3); // we marked our newUser to follow a tuple so it must never be 
 // console.log(newUser);
 
 // interfaces
-
 interface User5 {
     readonly dbId : number,
     email : string,
@@ -233,7 +233,6 @@ interface User5 {
 }
 
 // REOPENING OF THE INTERFACE
-
 interface User5 {
     githubId : string
 }
@@ -310,7 +309,7 @@ class khiladi2 {
         this._courseCount = courseNum;
     }
 }
-// use of protected : The property marked as this can be accessed in its own class and in the class tat inherits the class
+// use of protected : The property marked as this can be accessed in its own class and in the class that inherits the class
 
 class subUser extends khiladi2{
     isFamily:boolean = true;
@@ -431,6 +430,14 @@ class Sellable <T> {
     }
 }
 
+const courseCart = new Sellable<Course>();
+
+courseCart.addToCart({
+    name: "TypeScript Basics",
+    author: "Parth",
+    subject: "Frontend"
+});
+
 // Detections : Cases about which we need to more catious
 function detectType(val :string | number){
     if(typeof val === "string"){
@@ -473,16 +480,16 @@ function isFish(pet : Fish |Bird): pet is Fish{
 
 function getFood(pet: Fish| Bird){
     if(isFish(pet)){
-        pet ;
+        pet ; // does nothing just present to know the type of pet
         return "fish food";
     }
     else{
-        pet;
+        pet; // does nothing just present to know the type of pet
         return "Bird food";
     }
 }
 
-// Discriminated UNions : It tells us to use kind to identify the type of interface 
+// Discriminated Unions : It tells us to use kind to identify the type of interfaces.
 
 interface Circle{
     kind : "circle",
